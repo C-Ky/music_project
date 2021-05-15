@@ -8,7 +8,7 @@
     <h1>Music Site - Disks!</h1>
     {% for alb in albums %}
         <div class="album">
-        <p>{{ alb.title }} by {{ alb.artist.name }}</p>
+        <p><a href="{% url 'album_info' alb.id %}">{{ alb.title }}</a> by {{ alb.artist.name }}</p>
         </div>
     {% empty %}
         <p>No albums.</p>

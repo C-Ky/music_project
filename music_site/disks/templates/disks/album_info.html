@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ album.title }}</title>
+</head>
+<body>
+    <h1>{{ album.title }} by {{ album.artist }}</h1>
+    {% for track in tracks %}
+        <div class="track">
+        <p>{{ track.name }}</p>
+        </div>
+    {% empty %}
+        <p>No tracks in this album.</p>
+    {% endfor %}
+</body>
+</html>
