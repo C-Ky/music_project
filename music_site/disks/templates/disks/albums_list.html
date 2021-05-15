@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Albums</title>
+</head>
+<body>
+    <h1>Music Site - Disks!</h1>
+    {% for alb in albums %}
+        <div class="album">
+        <p>{{ alb.title }} by {{ alb.artist.name }}</p>
+        </div>
+    {% empty %}
+        <p>No albums.</p>
+    {% endfor %}
+</body>
+</html>
