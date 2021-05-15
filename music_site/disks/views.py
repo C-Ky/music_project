@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from disks.models import Album, Artist, Track
+from .models import Album, Artist, Track
 
 
 def list_albums(request):
@@ -12,4 +12,12 @@ def album_info(request, id):
     """ Displays all tracks of an album """
     album = get_object_or_404(Album, id=id)
     tracks = Track.objects.filter(album=album)
+    tracks = [(track, track.milliseconds//60000, (track.milliseconds % 60000)//1000) for track in tracks]
     return render(request, 'disks/album_info.html', locals())
+
+
+def search_result(request):
+    """ Displays the result of a search on album title """
+    search_key = request.GET['query']
+    albums = Album.objects.filter(title__contains=search_key)
+    return render(request, 'disks/search_result.html', locals())

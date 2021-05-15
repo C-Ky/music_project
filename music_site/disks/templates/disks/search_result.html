@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Albums</title>
+    <title>Search result</title>
     <style>
         table, th, td {
           border: 1px solid grey;
@@ -17,15 +17,7 @@
     </style>
 </head>
 <body>
-    <h1 style="text-indent: 600px">Disks application</h1><br>
-
-    <form action="{% url 'search_result' %}" method="get">
-        {% csrf_token %}
-        <label for="id_query">Album:</label>
-        <input id="id_query" maxlength="100" name="query" type="text" value="Album">
-        <input type="submit" value="Search">
-    </form><br>
-
+    <h1 style="text-indent: 30px">Result for the search "{{search_key}}"</h1><br>
     <table>
         <tr style="background-color: rgb(200,200,200)">
             <th>Title</th>
