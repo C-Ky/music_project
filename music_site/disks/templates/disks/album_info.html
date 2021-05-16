@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ album.title }}</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            padding-right: 60px;
+            padding-left: 10px;
+        }
+        th {
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ album.title }} by {{ album.artist }}</h1><br>
+    <table>
+        <tr style="background-color: rgb(200,200,200)">
+            <th>Title</th>
+            <th>Composer</th>
+            <th>Duration</th>
+            <th style="padding:10px">Unit Price</th>
+        </tr>
+        {% for track,min,sec in tracks %}
+            <div class="track">
+                <tr>
+                    <td>{{ track.name }}</td>
+                    <td>{{ track.composer }}</td>
+                    <td>{{min}}.{{sec}} min</td>
+                    <td style="padding:10px">{{ track.unitPrice }} B</td>
+                </tr>
+            </div>
+        {% empty %}
+            <p>No tracks in this album.</p>
+        {% endfor %}
+    </table>
+</body>
+</html>

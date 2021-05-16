@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Search result</title>
+    <style>
+        table, th, td {
+          border: 1px solid grey;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 10px;
+        }
+        th {
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-indent: 30px">Result for the search "{{search_key}}"</h1><br>
+    <table>
+        <tr style="background-color: rgb(200,200,200)">
+            <th>Title</th>
+            <th>Artist</th>
+        </tr>
+        {% for alb in albums %}
+            <div class="album">
+                <tr>
+                    <td><a href="{% url 'album_info' alb.id %}">{{ alb.title }}</a></td>
+                    <td>{{ alb.artist }}</td>
+                </tr>
+            </div>
+        {% empty %}
+            <p>No albums.</p>
+        {% endfor %}
+</body>
+</html>
