@@ -19,10 +19,10 @@
 <body>
     <h1 style="text-indent: 600px">Disks application</h1><br>
 
-    <form action="{% url 'search_result' %}" method="get">
+    <form action="{% url 'search_result' %}" method="post">
         {% csrf_token %}
         <label for="id_query">Album:</label>
-        <input id="id_query" maxlength="100" name="query" type="text" value="Album">
+        <input id="id_query" maxlength="100" name="search_key" type="text" value="Album">
         <input type="submit" value="Search">
     </form><br>
 
