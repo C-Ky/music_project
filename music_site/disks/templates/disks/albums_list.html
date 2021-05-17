@@ -21,25 +21,29 @@
 
     <form action="{% url 'search_result' %}" method="post">
         {% csrf_token %}
+        <!-- Or next two lines can be replaced by {{ form }} -->
         <label for="id_query">Album:</label>
-        <input id="id_query" maxlength="100" name="search_key" type="text" value="Album">
+        <input id="id_query" maxlength="100" name="search_key" type="text" value="Album"> <!-- Specify name as attribute from form -->
         <input type="submit" value="Search">
     </form><br>
 
-    <table>
-        <tr style="background-color: rgb(200,200,200)">
-            <th>Title</th>
-            <th>Artist</th>
-        </tr>
-        {% for alb in albums %}
-            <div class="album">
-                <tr>
-                    <td><a href="{% url 'album_info' alb.id %}">{{ alb.title }}</a></td>
-                    <td>{{ alb.artist }}</td>
-                </tr>
-            </div>
-        {% empty %}
-            <p>No albums.</p>
-        {% endfor %}
+    {% if albums %}
+        <table>
+            <tr style="background-color: rgb(200,200,200)">
+                <th>Title</th>
+                <th>Artist</th>
+            </tr>
+            {% for alb in albums %}
+                <div class="album">
+                    <tr>
+                        <td><a href="{% url 'album_info' alb.id %}">{{ alb.title }}</a></td>
+                        <td>{{ alb.artist }}</td>
+                    </tr>
+                </div>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No albums</p>
+    {% endif %}
 </body>
 </html>

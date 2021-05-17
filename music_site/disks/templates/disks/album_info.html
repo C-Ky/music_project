@@ -27,7 +27,7 @@
             <th>Duration</th>
             <th style="padding:10px">Unit Price</th>
         </tr>
-        {% for track,min,sec in tracks %}
+        {% for track,min,sec in tracks %} <!-- Warning! No '(' when accessing tuple -->
             <div class="track">
                 <tr>
                     <td>{{ track.name }}</td>

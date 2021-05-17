@@ -19,4 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('disks.urls')),
+    # Tip: you can define
+    # path('disks/', include('disks.urls')), #to arrange urls by applications
+    # path('', disks.views.albums_list), #to define homepage
 ]
